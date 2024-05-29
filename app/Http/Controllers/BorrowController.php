@@ -67,8 +67,7 @@ class BorrowController extends Controller
 
             // check member for borrow
             $borrowedBooks = Borrow::where('members_id', $membersId)
-                                    ->where('books_id', $booksId)
-                                    ->where('returned_at', '!=', null)
+                                    ->whereNull('returned_at')
                                     ->count();
 
             // check data book
